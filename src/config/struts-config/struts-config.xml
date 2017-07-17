@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.custom.i18n.resources" value="application" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	
+	<package name="global" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor-stack name="SMInterceptorStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="SMInterceptorStack"></default-interceptor-ref>
+	</package>
+
+	<!-- WEBLOGIC服务器下不支持通匹符配置方式，只能一个个地include -->
+	<include file="com/yt/sm/frame/xtgl/config/SystemStrutsConfig.xml" />
+	<include file="com/yt/sm/frame/hygl/config/SystemStrutsConfig.xml" />
+	<include file="com/yt/sm/frame/xsjl/config/SystemStrutsConfig.xml" />
+	<include file="com/yt/sm/frame/dlzc/config/SystemStrutsConfig.xml" />
+	<include file="com/yt/sm/frame/attach/config/SystemStrutsConfig.xml" />
+	<include file="com/yt/sm/frame/impData/config/SystemStrutsConfig.xml" />
+</struts>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xsjlMapper">
+	<!--增加论文  -->
+	  <select id="addLwglVo" parameterType="map" resultType="int">
+		insert into CH_LWGL (userId,lwtm,lwzz,zzdw,lwnr,cjsj,pub,auditstatus) values
+		(#{userId},#{lwtm},#{lwzz},#{zzdw},#{lwnr},#{cjsj},#{pub},#{auditstatus})
+	</select> 
+	<!--分页查询个人论文  -->
+	<select id="findLwglVoList"  parameterType="map" statementType="STATEMENT" resultType="com.yt.sm.frame.xsjl.vo.LwglVo">
+		select * from CH_LWGL 
+			<if test="userId!=null and userId!=''">
+			WHERE userId=${userId}
+			</if>
+			<if test="lwtm!=null and lwtm!=''">
+				and lwtm like '%${lwtm}%'
+			</if>
+		 LIMIT ${page},${rows}
+	</select>
+	<!--前台分页查询论文  -->
+	<select id="frontXsjlList"  parameterType="map" statementType="STATEMENT" resultType="com.yt.sm.frame.xsjl.vo.LwglVo">
+		select * from CH_LWGL where pub=${pub}
+		 LIMIT ${page},${rows}
+	</select>
+	<!-- 前台论文总数 -->
+	<select id="getfrontXsjlTotal" parameterType="map" resultType="int">
+		select count(*) from  CH_LWGL 
+		where pub=#{pub}
+	</select>
+	<!--分页查询所有论文  -->
+	<select id="findLwglVoList2"  parameterType="map" statementType="STATEMENT" resultType="com.yt.sm.frame.xsjl.vo.LwglVo">
+		select * from CH_LWGL
+			<if test="flag1!=null and flag1!=''">
+			where auditStatus=${flag1} 
+			</if>
+			<if test="flag2!=null and flag2!=''">
+			where auditStatus!=${flag2} 
+			</if>
+			<if test="lwtm!=null and lwtm!=''">
+				and  lwtm like '%${lwtm}%'
+			</if>
+		 LIMIT ${page},${rows}
+	</select>
+	<!--查询所有论文  -->
+	<select id="findLwglVoList3"  parameterType="map"  resultType="com.yt.sm.frame.xsjl.vo.LwglVo">
+		select * from CH_LWGL
+	</select>
+	<!-- 个人论文总数 -->
+	<select id="getLwglVoTotal" parameterType="map" resultType="int">
+		select count(*) from  CH_LWGL 
+		<if test="userId!=null and userId!=''">
+			WHERE userId=#{userId}
+		</if>
+	</select>
+	<!-- 所有论文总数 -->
+	<select id="getLwglVoTotal2" parameterType="map" resultType="int">
+		select count(*) from  CH_LWGL 
+			<if test="flag1!=null and flag1!=''">
+			where auditStatus=#{flag1} 
+			</if>
+			<if test="flag2!=null and flag2!=''">
+			where auditStatus!=#{flag2} 
+			</if>
+	</select>
+	<!-- 删除论文 -->
+	<select id="delLwgl" parameterType="map" resultType="int">
+		delete from CH_LWGL  where id=#{id}
+	</select>
+	<!-- 发布论文 -->
+	<select id="pubLwgl" parameterType="map" resultType="int">
+		update CH_LWGL set pub=#{pub},fbsj=#{fbsj}  where id=#{id}
+	</select>
+	<!-- 发布论文 -->
+	<select id="cancelAuditLwgl" parameterType="map" resultType="int">
+		update CH_LWGL set auditstatus=#{auditstatus}  where id=#{id}
+	</select>
+	<!-- 取消发布论文 -->
+	<select id="cancelPubLwgl" parameterType="map" resultType="int">
+		update CH_LWGL set pub=#{pub},fbsj=#{fbsj}  where id=#{id}
+	</select>
+	<!-- 获得一条论文 -->
+	<select id="getOneLwgl" parameterType="map" resultType="com.yt.sm.frame.xsjl.vo.LwglVo">
+		select * from  CH_LWGL  where id=#{id}
+	</select>
+	<!-- 更新一条论文 -->
+	<select id="updateLwglVo" parameterType="map" resultType="int">
+		update  CH_LWGL set
+		userId=#{userId},
+		lwtm=#{lwtm},
+		lwzz=#{lwzz},
+		zzdw=#{zzdw},
+		lwnr=#{lwnr},
+		auditstatus=#{auditstatus},
+		auditdate=#{auditdate},
+		auditidea=#{auditidea}
+		 where id=#{id}
+	</select>
+	<!-- 更新一条论文 -->
+	<select id="updateLwglVo2" parameterType="map" resultType="int">
+		update  CH_LWGL set
+		lwtm=#{lwtm},
+		lwzz=#{lwzz},
+		zzdw=#{zzdw},
+		lwnr=#{lwnr}
+		 where id=#{id}
+	</select>
+</mapper>

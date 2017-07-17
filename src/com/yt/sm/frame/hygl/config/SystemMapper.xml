@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hyglMapper">
+	<!--查询管理员菜单  -->
+	 <select id="findAdminMenu" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.Menu">
+		select * from ch_menu 
+		<if test="flag!=null and flag!=''">
+		where flag=#{flag}
+		</if>
+		order by wz
+	</select> 
+	<!--获得一个用户  -->
+	 <select id="getOneUser" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.User">
+		select * from CH_USER where id=#{id}
+	</select> 
+	<!--获得一个个人会员信息  -->
+	 <select id="getPersonInfo" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.Person">
+		SELECT p.*,u.username FROM CH_PERSON p INNER JOIN `ch_user` u ON u.`personid`=p.`id` WHERE  p.id=#{id}
+	</select> 
+	<!--获得一个团体会员信息  -->
+	 <select id="getGroupInfo" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.Group">
+	 SELECT g.*,u.username FROM CH_GROUP g INNER JOIN `ch_user` u ON u.`groupid`=g.`id` WHERE  g.id=#{id}
+	</select> 
+	<!--修改密码  -->
+	 <select id="savePwd" parameterType="map" resultType="int">
+		update  CH_USER set password=#{password} where id=#{id}
+	</select> 
+	<!--修改一个个人会员信息  -->
+	 <select id="updatePerson" parameterType="map" resultType="int">
+		update  CH_PERSON set
+		 xm=#{xm}, 
+		 xb=#{xb}, 
+		 csrq=#{csrq}, 
+		 jg=#{jg}, 
+		 mz=#{mz}, 
+		 dp=#{dp}, 
+		 whcd=#{whcd}, 
+		 jszc=#{jszc}, 
+		 zy=#{zy}, 
+		 zc=#{zc}, 
+		 wysp=#{wysp}, 
+		 xcsgz=#{xcsgz}, 
+		 gzdw=#{gzdw}, 
+		 zw=#{zw}, 
+		 txdz=#{txdz}, 
+		 dh=#{dh}, 
+		 hsrh=#{hsrh}, 
+		 bhzw=#{bhzw}, 
+		 xl=#{xl}, 
+		 xw=#{xw}, 
+		 byxx=#{byxx}, 
+		 gzjl=#{gzjl}, 
+		 kycg=#{kycg}, 
+		 xhspyj=#{xhspyj}, 
+		 bz=#{bz}, 
+		 grhyzsbh=#{grhyzsbh},
+		 auditStatus=#{auditStatus},
+		 auditDate=#{auditDate},
+		 xhAuditdate=#{xhAuditdate},
+		 tbdate=#{tbdate}
+		 where id=#{id}
+	</select> 
+	<!--修改团体会员信息  -->
+	 <select id="updateGroup" parameterType="map" resultType="int">
+		update  CH_GROUP set
+		 sqdwmc=#{sqdwmc},
+		 dwfr=#{dwfr},
+		 chxhlsxm=#{chxhlsxm},
+		 dwrs=#{dwrs},
+		 jsrys=#{jsrys},
+		 gjzcrs=#{gjzcrs},
+		 zjzcrs=#{zjzcrs},
+		 dwxz=#{dwxz},
+		 dwdz=#{dwdz},
+		 yb=#{yb},
+		 lxrxm=#{lxrxm},
+		 lxdh=#{lxdh},
+		 cz=#{cz},
+		 em=#{em},
+		 chzzjb=#{chzzjb},
+		 bh=#{bh},
+		 ywfw=#{ywfw},
+		 dwcbw=#{dwcbw},
+		 sqtthy=#{sqtthy},
+		 rhsj=#{rhsj},
+		 xhspyj=#{xhspyj},
+		 bz=#{bz},
+		 tthyzsbh=#{tthyzsbh},
+		 auditStatus=#{auditStatus},
+		 auditDate=#{auditDate},
+		 xhAuditdate=#{xhAuditdate},
+		 tbdate=#{tbdate}
+		 where id=#{id}
+	</select> 
+	<!--分页查询个人信息列表  -->
+	<select id="findPersonList"  parameterType="map" statementType="STATEMENT" resultType="com.yt.sm.frame.hygl.vo.Person">
+		select * from ch_person where id not in('1')
+			<if test="flag1!=null and flag1!=''">
+			and auditStatus=${flag1}
+			</if>
+			<if test="flag2!=null and flag2!=''">
+			and  auditStatus!=${flag2}
+			</if>
+			<if test="xm!=null and xm!=''">
+				and xm like'%${xm}%'
+			</if>
+			<if test="bhzw!=null and bhzw!=''">
+				and bhzw like '%${bhzw}%'
+			</if>
+			<if test="gzdw!=null and gzdw!=''">
+				and gzdw like '%${gzdw}%'
+			</if>
+			<if test="auditStatus!=null and auditStatus!=''">
+				and auditStatus like '%${auditStatus}%'
+			</if>
+			order by id desc 
+		 LIMIT ${page},${rows}
+	</select>
+	<select id="findPersonList2"  parameterType="map"  resultType="com.yt.sm.frame.hygl.vo.Person">
+	select * from ch_person
+	</select>
+	<select id="findGroupList2"  parameterType="map"  resultType="com.yt.sm.frame.hygl.vo.Group">
+	select * from ch_group
+	</select>
+	<!-- 个人总数 -->
+	<select id="getPersonTotal" parameterType="map" resultType="int">
+		select count(*) from  ch_person where  id not in('1')
+			<if test="flag1!=null and flag1!=''">
+			and  auditStatus=#{flag1}
+			</if>
+			<if test="flag2!=null and flag2!=''">
+			and  auditStatus!=#{flag2}
+			</if>
+	</select>
+	<!-- 团体编号最大值 -->
+	<select id="getGroupMax" parameterType="map" resultType="int">
+		SELECT MAX(tthyzsbh) from  ch_group 
+	</select>
+	<!-- 个人编号最大值 -->
+	<select id="getPersonMax" parameterType="map" resultType="int">
+		SELECT MAX(grhyzsbh) from  ch_person 
+	</select>
+	<!-- 论文总数 -->
+	<select id="delPerson" parameterType="map" resultType="int">
+		delete from  ch_person where id=#{id}
+	</select>
+	<!--分页查询团体信息列表  -->
+	<select id="findGroupList"  parameterType="map" statementType="STATEMENT" resultType="com.yt.sm.frame.hygl.vo.Group">
+		select * from ch_group 
+			<if test="flag1!=null and flag1!=''">
+			where auditStatus=${flag1}
+			</if>
+			<if test="flag2!=null and flag2!=''">
+			where auditStatus!=${flag2}
+			</if>
+			<if test="sqdwmc!=null and sqdwmc!=''">
+				and sqdwmc like'%${sqdwmc}%'
+			</if>
+			<if test="dwfr!=null and dwfr!=''">
+				and dwfr like '%${dwfr}%'
+			</if>
+			<if test="lxrxm!=null and lxrxm!=''">
+				and lxrxm like '%${lxrxm}%'
+			</if>
+			<if test="auditStatus!=null and auditStatus!=''">
+				and auditStatus like '%${auditStatus}%'
+			</if>
+			order by id desc 
+		 LIMIT ${page},${rows}
+	</select>
+	<!-- 团体总数 -->
+	<select id="getGroupTotal" parameterType="map" resultType="int">
+		select count(*) from  ch_group 
+			<if test="flag1!=null and flag1!=''">
+			where auditStatus=#{flag1}
+			</if>
+			<if test="flag2!=null and flag2!=''">
+			where auditStatus!=#{flag2}
+			</if>
+	</select>
+	<!-- 团体总数 -->
+	<select id="delGroup" parameterType="map" resultType="int">
+		delete from  ch_group where id=#{id}
+	</select>
+</mapper>

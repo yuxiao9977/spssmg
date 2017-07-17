@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xtglMapper">
+	
+	<!-- 查询菜单名称 -->
+	<select id="getMenuByIds" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.Menu">
+		select t.* from CH_MENU t where t.treeid=#{treeid} or t.id=#{pid} order by lel
+	</select>
+	
+	<!-- 添加资讯 -->
+	<select id="addZx" parameterType="map">
+		insert into ch_zxfb (btmc,zxnr,fbdw,fbsj,cjsj,cjr,lx,zt) values 
+		(#{btmc},#{zxnr},#{fbdw},#{fbsj},now(),#{cjr},#{lx},#{zt})
+	</select>
+	
+	<!-- 更新资讯 -->
+	<select id="updZx" parameterType="map">
+		update ch_zxfb set btmc=#{btmc},zxnr=#{zxnr},fbdw=#{fbdw},fbsj=#{fbsj} where id=#{id}
+	</select>
+	
+	<!-- 查询资讯By类型 -->
+	<select id="getZxByLx" parameterType="map" resultType="com.yt.sm.frame.xtgl.vo.ZxfbVO">
+		SELECT * FROM ch_zxfb where lx=#{lx}
+	</select>
+	
+	<!-- 查询资讯分页 -->
+	<select id="getZxByPage" parameterType="map" statementType="STATEMENT" resultType="com.yt.sm.frame.xtgl.vo.ZxfbVO">
+		SELECT * FROM ch_zxfb where lx=${lx} 
+		<if test="btmc!=null and btmc!=''"> and btmc like '%${btmc}%' </if>
+		<if test="zt!=null and zt!=''"> and zt=${zt} </if>
+		order by fbsj desc limit ${startRow}, ${rows}
+	</select>
+	
+	<!-- 查询资讯分页 -->
+	<select id="getZxTotal" parameterType="map" resultType="int">
+		SELECT count(*) FROM ch_zxfb where lx=#{lx} 
+		<if test="btmc!=null and btmc!=''"> and btmc like CONCAT('%',#{btmc},'%') </if>
+		<if test="zt!=null and zt!=''"> and zt=#{zt} </if>
+	</select>
+	
+	<!-- 查询资讯ById -->
+	<select id="getZxById" parameterType="map" resultType="com.yt.sm.frame.xtgl.vo.ZxfbVO">
+		SELECT * FROM ch_zxfb where id=#{id}
+	</select>
+	
+	<!-- 更新资讯状态 -->
+	<select id="updZxZt" parameterType="map">
+		update ch_zxfb set zt=#{zt} where id=#{id}
+	</select>
+	
+	<!-- 删除资讯 -->
+	<select id="delZxById" parameterType="map">
+		delete from ch_zxfb where id=#{id}
+	</select>
+	
+	<!-- 查询新闻图片 -->
+	<select id="getXwtpList" resultType="com.yt.sm.frame.xtgl.vo.XwtpVO">
+		SELECT * FROM ch_xwtp
+	</select>
+	
+	<!-- 添加新闻图片 -->
+	<select id="addXwtp" parameterType="map">
+		insert into ch_xwtp (tpmc,tpms,tplj,url,cjr,cjsj) value (#{tpmc},#{tpms},#{tplj},#{url},#{cjr},now())
+	</select>
+	
+	<!-- 修改新闻图片 -->
+	<select id="updXwtp" parameterType="map">
+		update ch_xwtp set tpms=#{tpms},url=#{url} where id=#{id}
+	</select>
+	
+	<!-- 删除图片新闻 -->
+	<select id="delXwtp" parameterType="map">
+		delete from ch_xwtp where id=#{id}
+	</select>
+	
+	<!-- 查询友情链接 -->
+	<select id="getYqljList" resultType="com.yt.sm.frame.xtgl.vo.ZxfbVO">
+		SELECT * FROM ch_zxfb WHERE lx=19
+	</select>
+	
+	<!-- 查询菜单ByPid -->
+	<select id="getMenuByPid" resultType="com.yt.sm.frame.hygl.vo.Menu">
+		SELECT * FROM ch_menu WHERE pid=2 and treeid!=9 order by wz
+	</select>
+	
+</mapper>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="xtglXtAction" extends="global" namespace="/xtgl/xt">
+		
+		<action name="getMenuByIds" class="com.yt.sm.frame.xtgl.action.XtAction" method="getMenuByIds">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="getZxByLx" class="com.yt.sm.frame.xtgl.action.XtAction" method="getZxByLx">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="addZx" class="com.yt.sm.frame.xtgl.action.XtAction" method="addZx">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="updZx" class="com.yt.sm.frame.xtgl.action.XtAction" method="updZx">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="getZxByPage" class="com.yt.sm.frame.xtgl.action.XtAction" method="getZxByPage">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="getZxById" class="com.yt.sm.frame.xtgl.action.XtAction" method="getZxById">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="updZxZt" class="com.yt.sm.frame.xtgl.action.XtAction" method="updZxZt">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="delZxById" class="com.yt.sm.frame.xtgl.action.XtAction" method="delZxById">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		<action name="getXwtpList" class="com.yt.sm.frame.xtgl.action.XtAction" method="getXwtpList">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="addXwtp" class="com.yt.sm.frame.xtgl.action.XtAction" method="addXwtp">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="updXwtp" class="com.yt.sm.frame.xtgl.action.XtAction" method="updXwtp">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="delXwtp" class="com.yt.sm.frame.xtgl.action.XtAction" method="delXwtp">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		<action name="getYqljList" class="com.yt.sm.frame.xtgl.action.XtAction" method="getYqljList">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		<action name="getMenuByPid" class="com.yt.sm.frame.xtgl.action.XtAction" method="getMenuByPid">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		<action name="getZxTotal" class="com.yt.sm.frame.xtgl.action.XtAction" method="getZxTotal">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+	</package>
+	
+</struts>

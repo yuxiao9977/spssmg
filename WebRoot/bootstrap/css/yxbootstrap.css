@@ -1,0 +1,18 @@
+.navbar-blue {
+  	border-color:#6699ff;width:1100px;
+}
+.navbar-blue .navbar-nav > li > a {
+	background: url('../../images/btl.jpg') repeat-x;
+	color:#fff;width:150px;text-align:center;
+	border-right:1px solid #6699ff;
+}
+.navbar-blue .navbar-nav > li > a:hover {
+	background: url('../../images/btl2.png') repeat-x;
+	color:#fff;width:150px;
+	border-right:1px solid #6699ff;
+}
+.navbar-blue .navbar-nav > li > a:focus {
+	background: url('../../images/btl2.png') repeat-x;
+	color:#fff;width:150px;
+	border-right:1px solid #6699ff;
+}

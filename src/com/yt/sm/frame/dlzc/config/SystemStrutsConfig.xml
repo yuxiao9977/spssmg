@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="dlzcAction" extends="global" namespace="/dlzc">
+		<!-- 登录 -->
+		 <action name="login" class="com.yt.sm.frame.dlzc.action.DlzcAction" method="login">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<!-- 退出 -->
+		 <action name="tuichu" class="com.yt.sm.frame.dlzc.action.DlzcAction" method="tuichu">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<!-- 注册个人会员-->
+		 <action name="addPerson" class="com.yt.sm.frame.dlzc.action.DlzcAction" method="addPerson">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<!-- 检查用户名-->
+		 <action name="checkUser" class="com.yt.sm.frame.dlzc.action.DlzcAction" method="checkUser">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<!-- 获得一个用户-->
+		 <action name="getOneUser2" class="com.yt.sm.frame.dlzc.action.DlzcAction" method="getOneUser2">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<!-- 增加团体会员-->
+		 <action name="addGroup" class="com.yt.sm.frame.dlzc.action.DlzcAction" method="addGroup">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<!-- 前天学术交流登录判断-->
+		 <action name="frontXsjl" class="com.yt.sm.frame.dlzc.action.DlzcAction" method="frontXsjl">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+	</package>
+</struts>

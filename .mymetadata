@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="spssmg"
+  id="myeclipse.1401963426218"
+  context-root="/spssmg"
+  j2ee-spec="6.0"
+  archive="spssmg.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

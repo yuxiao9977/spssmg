@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="impDataMapper">
+	<!--增加一个个人会员  -->
+	 <select id="addPerson" parameterType="map" resultType="int">
+		insert into CH_PERSON (xm,xb,csrq,jg,mz,dp,whcd,jszc,zy,zc,wysp,xcsgz,gzdw,zw,txdz,dh,hsrh,bhzw,xl,byxx,xw,kycg,gzjl,auditStatus,grhyzsbh) values
+		(#{xm},#{xb},#{csrq},#{jg},#{mz},#{dp},#{whcd},#{jszc},#{zy},#{zc},#{wysp},#{xcsgz},#{gzdw},#{zw},#{txdz},#{dh},#{hsrh},#{bhzw},#{xl},#{byxx},#{xw},#{kycg},#{gzjl},#{auditStatus},#{grhyzsbh})
+	</select>
+	<!--获得所有个人会员信息  -->
+	 <select id="findPersonList" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.Person">
+		select * from CH_PERSON 
+		<if test="auditStatus!=null and auditStatus1=''">
+		where auditStatus=#{auditStatus}
+		</if>
+	</select>
+	<!--增加团体  -->
+	<select id="addGroup"  parameterType="map"  resultType="int">
+		insert into  CH_GROUP (sqdwmc,dwfr,chxhlsxm,dwrs,jsrys,gjzcrs,zjzcrs,dwdz,yb,lxrxm,lxdh,cz,em,chzzjb,bh,ywfw,dwcbw,rhsj,dwfzr,sqdw,auditStatus,tthyzsbh) values 
+		(#{sqdwmc},#{dwfr},#{chxhlsxm},#{dwrs},#{jsrys},#{gjzcrs},#{zjzcrs},#{dwdz},#{yb},#{lxrxm},#{lxdh},#{cz},#{em},#{chzzjb},#{bh},#{ywfw},#{dwcbw},#{rhsj},#{dwfzr},#{sqdw},#{auditStatus},#{tthyzsbh})
+	</select> 
+	<!--获得所有个人会员信息  -->
+	 <select id="findGroupList" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.Group">
+		select * from CH_GROUP 
+	</select> 
+</mapper>

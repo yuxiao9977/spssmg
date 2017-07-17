@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="hyglAction" extends="global" namespace="/hygl">
+		<!-- 获得用户信息 -->
+		<action name="getUserInfo" class="com.yt.sm.frame.hygl.action.HyglAction" method="getUserInfo">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 修该个人会员信息 -->
+		<action name="updatePerson" class="com.yt.sm.frame.hygl.action.HyglAction" method="updatePerson">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 审核个人会员信息 -->
+		<action name="updatePerson2" class="com.yt.sm.frame.hygl.action.HyglAction" method="updatePerson2">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 修该团体会员信息 -->
+		<action name="updateGroup" class="com.yt.sm.frame.hygl.action.HyglAction" method="updateGroup">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 审核团体会员信息 -->
+		<action name="updateGroup2" class="com.yt.sm.frame.hygl.action.HyglAction" method="updateGroup2">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 查找菜单 -->
+		<action name="findAdminMenu" class="com.yt.sm.frame.hygl.action.HyglAction" method="findAdminMenu">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 查找旧密码 -->
+		<action name="checkOldPwd" class="com.yt.sm.frame.hygl.action.HyglAction" method="checkOldPwd">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 保存密码 -->
+		<action name="savePwd" class="com.yt.sm.frame.hygl.action.HyglAction" method="savePwd">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 查询个人列表 -->
+		<action name="findPersonList" class="com.yt.sm.frame.hygl.action.HyglAction" method="findPersonList">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 删除个人会员 -->
+		<action name="delPerson" class="com.yt.sm.frame.hygl.action.HyglAction" method="delPerson">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 删除个人会员 -->
+		<action name="getPersonInfo" class="com.yt.sm.frame.hygl.action.HyglAction" method="getPersonInfo">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 查询团体会员 -->
+		<action name="findGroupList" class="com.yt.sm.frame.hygl.action.HyglAction" method="findGroupList">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 一个团体会员 -->
+		<action name="getGroupInfo" class="com.yt.sm.frame.hygl.action.HyglAction" method="getGroupInfo">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 删除团体会员 -->
+		<action name="delGroup" class="com.yt.sm.frame.hygl.action.HyglAction" method="delGroup">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 前台个人会员 -->
+		<action name="frontPersonList" class="com.yt.sm.frame.hygl.action.HyglAction" method="frontPersonList">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 前台团体会员 -->
+		<action name="frontGroupList" class="com.yt.sm.frame.hygl.action.HyglAction" method="frontGroupList">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		
+		
+	</package>
+	
+</struts>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Config>
+	<!--报表文件存放目录-->
+	<reportHome>/WEB-INF/baobiao</reportHome>
+		
+	<!--web编码-->
+	<characterEncode>UTF-8</characterEncode>
+		
+	<!--用户工厂配置-->
+	<userFactory>com.founder.sm.ls.bijie.DemoUserFactory</userFactory>
+	
+	<!--事件处理器配置-->
+	<eventHandler></eventHandler>
+	
+	<!--数据源-->
+	<dsConf>
+		
+		<!--潍坊巡逻警务系统皕杰报表数据源-->
+		<dataSource>
+			<Name>wforcl</Name> <!--数据源名称，与设计器中一致  -->
+			<JNDIPrefix>java:comp/env/</JNDIPrefix> <!--JNDI查找前缀-->
+			<JNDIName>wforcl</JNDIName> <!--数据源的JNDI资源名称-->
+			<DBType>oracle</DBType> <!--数据库类型-->
+			<DBEncode>gb2312</DBEncode> <!--数据库编码方式-->
+			<SQLDecode>false</SQLDecode> <!--是否进行Sql语句转码-->
+			<Default>true</Default> <!--是否为默认数据源-->
+		</dataSource>
+		<dataSource>
+			<Name>pcs</Name> <!--数据源名称，与设计器中一致  -->
+			<JNDIPrefix>java:comp/env/</JNDIPrefix> <!--JNDI查找前缀-->
+			<JNDIName>pcs</JNDIName> <!--数据源的JNDI资源名称-->
+			<DBType>oracle</DBType> <!--数据库类型-->
+			<DBEncode>gb2312</DBEncode> <!--数据库编码方式-->
+			<SQLDecode>false</SQLDecode> <!--是否进行Sql语句转码-->
+			<Default>true</Default> <!--是否为默认数据源-->
+		</dataSource>
+	</dsConf>
+	<!-- 语义层文件存放目录 -->
+	<bizModelHome>/WEB-INF/bizmodel</bizModelHome>
+	 
+	<!-- 系统运行模式，develop | product -->
+	<runMode>develop</runMode>
+	
+	<!-- 缓存 -->
+	<cache>
+		<maxElements>150</maxElements> <!-- 内存中缓存的最大对象数 -->
+		<liveTime>1800</liveTime> <!-- 生命周期(秒) -->
+		<timeout>600</timeout> <!-- 过期时间(秒) -->
+		<useDisk>false</useDisk> <!-- 是否使用硬盘缓存 -->
+	</cache>
+	
+	<html>
+		<!--报表在web上的输出尺寸-->
+		<rptwidth>100%</rptwidth>
+		<rptheight>100%</rptheight>
+		
+		<!--输出宽度自适应选项-->
+		<fitwidth>true</fitwidth>
+		
+		<!--页面工具条配置-->
+		<toolbar>
+			<toolbardisplay>bottom</toolbardisplay> <!--工具条显示信息(表格下方、上方、不显示)，bottom | top | none-->
+			<xlsbtn>true</xlsbtn> <!--是否显示整页导出excel按钮-->
+			<xlsbtn1>true</xlsbtn1> <!--是否显示分页导出excel按钮-->
+			<pdfbtn>false</pdfbtn> <!--是否显示导出PDF按钮-->
+			<docbtn>false</docbtn> <!--是否显示导出Word按钮-->
+			<printbtn>false</printbtn> <!--是否显示打印按钮-->
+		</toolbar>
+		
+		<!--填报表页面输出配置-->
+		<fillin>
+			<forwardurl></forwardurl> <!--提交填报表单后，转向的位置，默认停留在本页-->
+			<errorforward></errorforward> <!--提交填报表单失败时，转向的位置，默认停留在本页-->
+			<offlinebtn>false</offlinebtn> <!--是否显示离线填报功能按钮-->
+			<deleteprompt>true</deleteprompt> <!--删除数据时，是否弹出确认操作提示-->
+			<saveprompt>true</saveprompt> <!--保存数据前，是否弹出确认操作提示-->
+			<succeedprompt>true</succeedprompt> <!--数据成功保存后，是否弹出提示信息-->
+		</fillin>
+		
+	</html>
+	
+	<!--客户端applet打印的java环境配置
+		<jreplugin>
+		  	<jreName>/WEB-INF/files/j2re-1_4_2_18-windows-i586-p.exe#Version=1,4,2,18</jreName>
+		  	<jreVersion>1.4</jreVersion>
+		</jreplugin>
+	-->
+	
+	<!--日志配置-->
+	<log>
+		<level>debug</level> <!-- 日志输出级别， debug | warning | error | off -->
+		<fileName>/WEB-INF/logs/bios_report.log</fileName> <!-- 日志文件名称 -->
+		<fileCount>1</fileCount> <!-- 日志文件个数 -->
+	</log>
+	
+	<!--URL前缀-->
+	<appUrlPrefix></appUrlPrefix>
+	
+</Config>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="xsjlAction" extends="global" namespace="/xsjl">
+		<!-- 增加论文 -->
+		<action name="addLwglVo" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="addLwglVo">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 查找用户的论文列表 -->
+		<action name="findLwglVoList" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="findLwglVoList">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 查找所有论文列表 -->
+		<action name="findLwglVoList2" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="findLwglVoList2">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 删除论文 -->
+		<action name="delLwgl" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="delLwgl">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 发布论文 -->
+		<action name="pubLwgl" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="pubLwgl">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 获得一个论文 -->
+		<action name="getOneLwgl" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="getOneLwgl">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 取消审核-->
+		<action name="cancelAuditLwgl" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="cancelAuditLwgl">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 更新论文 -->
+		<action name="updateLwglVo" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="updateLwglVo">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 更新论文 -->
+		<action name="updateLwglVo2" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="updateLwglVo2">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 更新论文 -->
+		<action name="cancelPubLwgl" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="cancelPubLwgl">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+		<!-- 前台论文查询 -->
+		<action name="frontXsjlList" class="com.yt.sm.frame.xsjl.action.XsjlAction" method="frontXsjlList">
+		 	<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action> 
+	</package>
+	
+</struts>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dlzcMapper">
+	<!--根据登录名获得一个用户  -->
+	 <select id="getUserByname" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.User">
+		select * from CH_USER where username=#{username}
+	</select> 
+	<!--修改用户  -->
+	 <select id="updateUser" parameterType="map" resultType="int">
+		update  CH_USER set
+		username=#{username},
+		password=#{password}
+		where id=#{id}
+	</select> 
+	<!--获得一个用户  -->
+	 <select id="getOneUser2" parameterType="map" resultType="com.yt.sm.frame.hygl.vo.User">
+		select * from CH_USER
+		<if test="groupId!=null and groupId!='' ">
+		 where groupId=#{groupId}
+		</if>
+		<if test="personId!=null and personId!='' ">
+		 where personId=#{personId}
+		</if>
+	</select> 
+	<!--增加一个个人会员  -->
+	 <select id="addPerson" parameterType="map" resultType="int">
+		insert into CH_PERSON (xm,xb,csrq,jg,mz,dp,whcd,jszc,zy,zc,wysp,xcsgz,gzdw,zw,txdz,dh,hsrh,bhzw,xl,byxx,xw,kycg,gzjl,auditStatus,xhspyj,xhAuditdate,tbdate,bz,zcsj) values
+		(#{xm},#{xb},#{csrq},#{jg},#{mz},#{dp},#{whcd},#{jszc},#{zy},#{zc},#{wysp},#{xcsgz},#{gzdw},#{zw},#{txdz},#{dh},#{hsrh},#{bhzw},#{xl},#{byxx},#{xw},#{kycg},#{gzjl},#{auditStatus},#{xhspyj},#{xhAuditdate},#{tbdate},#{bz},now())
+	</select>
+	<select id="findPersonList"  parameterType="map"  resultType="com.yt.sm.frame.hygl.vo.Person">
+		select * from ch_person 
+	</select> 
+	<select id="findGroupList"  parameterType="map"  resultType="com.yt.sm.frame.hygl.vo.Group">
+		select * from CH_GROUP 
+	</select> 
+	<!--删除用户  -->
+	<select id="deleteUser"  parameterType="map"  resultType="int">
+		delete from ch_user 
+		<if test="personId!=null and personId!=''">
+		where personId=#{personId}
+		</if>
+		<if test="groupId!=null and groupId!=''">
+		where groupId=#{groupId}
+		</if>
+	</select> 
+	<!--增加用户  -->
+	<select id="addUser"  parameterType="map"  resultType="int">
+		insert into  CH_USER (username,password,personId,groupId,isAdmin,isGroup) values 
+		(#{username},#{password},#{personId},#{groupId},#{isAdmin},#{isGroup})
+	</select> 
+	<!--增加团体  -->
+	<select id="addGroup"  parameterType="map"  resultType="int">
+		insert into  CH_GROUP (sqdwmc,dwfr,chxhlsxm,dwrs,jsrys,gjzcrs,zjzcrs,dwxz,dwdz,yb,lxrxm,lxdh,cz,em,chzzjb,bh,ywfw,dwcbw,sqtthy,rhsj,dwfzr,sqdw,auditStatus,xhspyj,xhAuditdate,tbdate,bz,zcsj) values 
+		(#{sqdwmc},#{dwfr},#{chxhlsxm},#{dwrs},#{jsrys},#{gjzcrs},#{zjzcrs},#{dwxz},#{dwdz},#{yb},#{lxrxm},#{lxdh},#{cz},#{em},#{chzzjb},#{bh},#{ywfw},#{dwcbw},#{sqtthy},#{rhsj},#{dwfzr},#{sqdw},#{auditStatus},#{xhspyj},#{xhAuditdate},#{tbdate},#{bz},now())
+	</select> 
+	
+</mapper>

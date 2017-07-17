@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="attachMapper">
+	<!--获得一个附件  -->
+	  <select id="getOneAttach" parameterType="map" resultType="com.yt.sm.frame.attach.vo.Attach">
+		select * from ch_attach
+			<trim prefix="where" prefixOverrides="and|or">
+				<if test="id!=null and id!='' ">
+					and id=#{id}
+				</if>
+				<if test=" relationId!=null and relationId!=''">
+					and relationId=#{relationId}
+				</if>
+				<if test=" style!=null and style!=''">
+					and style= #{style}
+				</if>
+			</trim>
+	</select> 
+	<!--获得一个附件  -->
+	 <select id="findAttach" parameterType="map" resultType="com.yt.sm.frame.attach.vo.Attach">
+		select * from ch_attach where relationId=#{relationId} and style=#{style}
+	</select> 
+	<!--增加附件  -->
+	  <select id="addAttach" parameterType="map" resultType="int">
+		insert into  ch_attach (relationId,style,fileName,url) values
+		(#{relationId},#{style},#{fileName},#{url})
+	</select> 
+	<!--更新附件  -->
+	  <select id="updateAttach" parameterType="map" resultType="int">
+		update ch_attach  set 
+		fileName=#{fileName},
+		url=#{url}
+		where relationId=#{relationId} and style=#{style} 
+	</select> 
+	<!--删除附件  -->
+	<select id="deleteAttach" parameterType="map" resultType="int">
+		delete from ch_attach where relationId=#{relationId} and style=#{style}
+	</select> 
+</mapper>
